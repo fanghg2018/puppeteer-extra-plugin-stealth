@@ -64,7 +64,7 @@ function sleep(ms) {
   await page.evaluate(() => window.scrollBy(0, window.innerHeight / 2));
   await sleep(1000);
 
-  // 抓取前几个结果标题
+  // 抓取结果标题
   const titles = await page.$$eval(
     'a h2  span',
     elements => elements.map(el => el.textContent.trim())
