@@ -109,9 +109,9 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
   // 让 Puppeteer 确保输入框获得焦点（两种写法都可以）
   // 1. 模拟点击输入框
-  // await page.click('#puppeteer-input');
+  await page.click('#puppeteer-input');
   // 2. 或者用专用API
-  await page.focus('#puppeteer-input');
+  // await page.focus('#puppeteer-input');
 
   // 慢速键盘输入
   await page.keyboard.type('Hello Puppeteer!', { delay: 200 });
