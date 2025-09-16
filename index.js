@@ -5,10 +5,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 
 puppeteer.use(StealthPlugin());
 
-// 简单 sleep 函数
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -72,6 +69,10 @@ function sleep(ms) {
 
   console.log("商品标题：");
   titles.forEach((t, i) => console.log(`${i + 1}. ${t}`));
+
+
+
+
 
   // await sleep(5000);
   // await browser.close();
