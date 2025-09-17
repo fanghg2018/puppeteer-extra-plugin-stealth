@@ -1,11 +1,11 @@
 // amazon_search.js
 
-const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
 puppeteer.use(StealthPlugin());
 
-
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -32,14 +32,14 @@ puppeteer.use(StealthPlugin());
   console.log("正在打开 Amazon...");
   await page.goto('https://www.amazon.com', {
     waitUntil: 'domcontentloaded',
-    timeout: 60000
+    timeout: 50000
   });
 
   // 检测是否出现验证页面
   try {
-    await page.waitForSelector('.a-button-text', { timeout: 5000 });
+    await page.waitForSelector('.a-button-text', { timeout: 3000 });
     console.log("检测到 Amazon 验证页面，尝试点击按钮...");
-    await page.click('.a-button-text');
+    await page.click('button.a-button-text');
     await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
   } catch (e) {
     console.log("未检测到验证页面，继续执行...");
